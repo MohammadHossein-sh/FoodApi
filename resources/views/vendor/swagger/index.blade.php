@@ -38,7 +38,7 @@
         <script type="text/javascript">
             window.onload = function() {
                 const ui = SwaggerUIBundle({
-                    url: "{!! $urlToDocs !!}",
+                    url: "http://localhost:8000/documentation/content",
                     dom_id: '#swagger-ui',
                     deepLinking: true,
                     presets: [

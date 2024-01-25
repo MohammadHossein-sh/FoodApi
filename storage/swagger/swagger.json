@@ -12,6 +12,65 @@
         }
     ],
     "paths": {
+        "/logout": {
+            "post": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "logout"
+                ]
+            }
+        },
+        "/register": {
+            "post": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "register"
+                ]
+            }
+        },
+        "/login": {
+            "post": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "login"
+                ]
+            }
+        },
         "/categories": {
             "get": {
                 "summary": "Display a listing of the resource.",
@@ -188,7 +247,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1802314504
+                        "example": 1740938903
                     },
                     "updated_at": {
                         "type": "string",
@@ -202,7 +261,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1387575616
+                        "example": 1975091307
                     }
                 },
                 "required": [
@@ -245,7 +304,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1801427275
+                        "example": 1971926289
                     },
                     "name": {
                         "type": "string",
@@ -258,7 +317,7 @@
                         "description": "integer",
                         "default": "0",
                         "nullable": false,
-                        "example": 1779249143
+                        "example": 1848605852
                     },
                     "updated_at": {
                         "type": "string",
@@ -283,7 +342,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1894333667
+                        "example": 1479688406
                     },
                     "created_at": {
                         "type": "string",
@@ -304,7 +363,7 @@
                         "description": "integer",
                         "default": "0",
                         "nullable": false,
-                        "example": 1112044878
+                        "example": 1002033779
                     },
                     "description": {
                         "type": "string",
@@ -317,14 +376,14 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1855148592
+                        "example": 1729585147
                     },
                     "price": {
                         "type": "integer",
                         "description": "integer",
                         "default": "0",
                         "nullable": false,
-                        "example": 1023941698
+                        "example": 1139694877
                     },
                     "primary_image": {
                         "type": "string",
@@ -337,7 +396,7 @@
                         "description": "integer",
                         "default": "0",
                         "nullable": false,
-                        "example": 1588537672
+                        "example": 1786784434
                     },
                     "title": {
                         "type": "string",
@@ -385,7 +444,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1660297636
+                        "example": 1403232891
                     },
                     "image": {
                         "type": "string",
@@ -398,7 +457,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1196507584
+                        "example": 1190590039
                     },
                     "updated_at": {
                         "type": "string",
@@ -461,7 +520,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1713326781
+                        "example": 1984749355
                     },
                     "last_name": {
                         "type": "string",
