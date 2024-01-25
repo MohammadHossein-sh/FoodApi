@@ -1,0 +1,510 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Laravel",
+        "description": "Documentation for the Application API",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost/api",
+            "description": "Laravel Server #1"
+        }
+    ],
+    "paths": {
+        "/categories": {
+            "get": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "categories"
+                ]
+            },
+            "post": {
+                "summary": "Store a newly created resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "categories"
+                ]
+            }
+        },
+        "/categories/{category}": {
+            "get": {
+                "summary": "Display the specified resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "category",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "categories"
+                ]
+            },
+            "put": {
+                "summary": "Update the specified resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "category",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "categories"
+                ]
+            },
+            "patch": {
+                "summary": "Update the specified resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "category",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "categories"
+                ]
+            },
+            "delete": {
+                "summary": "Remove the specified resource from storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "category",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "categories"
+                ]
+            }
+        }
+    },
+    "tags": [],
+    "components": {
+        "schemas": {
+            "Address": {
+                "type": "object",
+                "properties": {
+                    "addresss": {
+                        "type": "string",
+                        "description": "text(65535)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "deleted_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1802314504
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "user_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1387575616
+                    }
+                },
+                "required": [
+                    "addresss",
+                    "id",
+                    "user_id"
+                ]
+            },
+            "Category": {
+                "type": "object",
+                "properties": {
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "deleted_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "display_name": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1801427275
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "parent_id": {
+                        "type": "integer",
+                        "description": "integer",
+                        "default": "0",
+                        "nullable": false,
+                        "example": 1779249143
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "display_name",
+                    "id",
+                    "name",
+                    "parent_id"
+                ]
+            },
+            "Product": {
+                "type": "object",
+                "properties": {
+                    "category_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1894333667
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "deleted_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "delivery_amount": {
+                        "type": "integer",
+                        "description": "integer",
+                        "default": "0",
+                        "nullable": false,
+                        "example": 1112044878
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "text(65535)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1855148592
+                    },
+                    "price": {
+                        "type": "integer",
+                        "description": "integer",
+                        "default": "0",
+                        "nullable": false,
+                        "example": 1023941698
+                    },
+                    "primary_image": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "quantity": {
+                        "type": "integer",
+                        "description": "integer",
+                        "default": "0",
+                        "nullable": false,
+                        "example": 1588537672
+                    },
+                    "title": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "category_id",
+                    "delivery_amount",
+                    "id",
+                    "price",
+                    "primary_image",
+                    "quantity",
+                    "title"
+                ]
+            },
+            "ProductImages": {
+                "type": "object",
+                "properties": {
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "deleted_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1660297636
+                    },
+                    "image": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "product_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1196507584
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "image",
+                    "product_id"
+                ]
+            },
+            "User": {
+                "type": "object",
+                "properties": {
+                    "cellphone": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "deleted_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "email": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "email_verified_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "first_name": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1713326781
+                    },
+                    "last_name": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "permission": {
+                        "type": "string",
+                        "description": "string",
+                        "default": "user",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "profile": {
+                        "type": "string",
+                        "description": "text(65535)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "email",
+                    "first_name",
+                    "id",
+                    "last_name",
+                    "permission"
+                ]
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    }
+}
