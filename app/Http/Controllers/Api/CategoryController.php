@@ -42,6 +42,7 @@ class CategoryController extends ApiController
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|regex:/^[a-zA-Z0-9آ-ی\s]+$/|unique:categories,name',
+            'parent_id' => 'regex:/^[a-zA-Z0-9آ-ی\s]+$/',
             'display_name' => 'required|regex:/^[a-zA-Z0-9آ-ی\s]+$/|unique:categories,name',
             'description' => 'regex:/^[a-zA-Z0-9آ-ی\s]+$/'
         ]);
@@ -82,6 +83,7 @@ class CategoryController extends ApiController
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|regex:/^[a-zA-Z0-9آ-ی\s]+$/|unique:categories,name',
+            'parent_id' => 'regex:/^[a-zA-Z0-9آ-ی\s]+$/',
             'display_name' => 'required|regex:/^[a-zA-Z0-9آ-ی\s]+$/|unique:categories,name',
             'description' => 'regex:/^[a-zA-Z0-9آ-ی\s]+$/'
         ]);
