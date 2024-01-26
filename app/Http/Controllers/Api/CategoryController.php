@@ -17,9 +17,19 @@ class CategoryController extends ApiController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $paginate =  $request->input('paginate', 0);
+        if ($paginate !== 0) {
+            $categories = Category::paginate($paginate);
+            $links = CategoryResource::collection($categories)->response()->getData()->links;
+            $meta = CategoryResource::collection($categories)->response()->getData()->meta;
+
+            return  $this->successPagintaeResponse("categories", CategoryResource::collection($categories), $links, $meta, $paginate, 200, "List of categories " . $paginate . " to " . $paginate . ":");
+        } else {
+            $categories = Category::all();
+            return $this->successResponse(CategoryResource::collection($categories), 200, "List all of categories:");
+        }
     }
 
     /**
@@ -32,7 +42,8 @@ class CategoryController extends ApiController
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|regex:/^[a-zA-Z0-9آ-ی\s]+$/|unique:categories,name',
-            'display_name' => 'required|regex:/^[a-zA-Z0-9آ-ی\s]+$/|unique:categories,name'
+            'display_name' => 'required|regex:/^[a-zA-Z0-9آ-ی\s]+$/|unique:categories,name',
+            'description' => 'regex:/^[a-zA-Z0-9آ-ی\s]+$/'
         ]);
         if ($validator->fails()) {
             return $this->errorResponse($validator->messages(), 422);
@@ -41,7 +52,8 @@ class CategoryController extends ApiController
 
         $category = Category::create([
             'name' => $request->name,
-            'display_name' => $request->display_name
+            'display_name' => $request->display_name,
+            'description' => $request->description,
         ]);
         return  $this->successResponse(new CategoryResource($category), 201, 'created successfully');
 
@@ -66,9 +78,25 @@ class CategoryController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|regex:/^[a-zA-Z0-9آ-ی\s]+$/|unique:categories,name',
+            'display_name' => 'required|regex:/^[a-zA-Z0-9آ-ی\s]+$/|unique:categories,name',
+            'description' => 'regex:/^[a-zA-Z0-9آ-ی\s]+$/'
+        ]);
+        if ($validator->fails()) {
+            return $this->errorResponse($validator->messages(), 422);
+        }
+        DB::beginTransaction();
+        $category->update([
+            'name' => $request->name,
+            'display_name' => $request->display_name,
+            'description' => $request->description,
+        ]);
+        return  $this->successResponse(new CategoryResource($category), 200, "updated successfully");
+
+        DB::commit();
     }
 
     /**
@@ -77,8 +105,11 @@ class CategoryController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        //
+        DB::beginTransaction();
+        $category->delete();
+        DB::commit();
+        return  $this->successResponse(new CategoryResource($category), 200, "deleted successfully");
     }
 }
