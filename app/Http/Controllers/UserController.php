@@ -15,6 +15,10 @@ class UserController extends ApiController
      *
      * @return \Illuminate\Http\Response
      */
+    /**
+     * @Route("/users/list?paginate=10", name="api_users_list", methods={"GET"})
+     */
+
     public function index(Request $request)
     {
         $paginate =  $request->input('paginate', 0);

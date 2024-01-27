@@ -12,6 +12,139 @@
         }
     ],
     "paths": {
+        "/users/list": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "users"
+                ]
+            }
+        },
+        "/users/{user}": {
+            "get": {
+                "summary": "Display the specified resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "users"
+                ]
+            },
+            "delete": {
+                "summary": "Remove the specified resource from storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "users"
+                ]
+            }
+        },
+        "/users/update": {
+            "put": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "users"
+                ]
+            },
+            "patch": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "users"
+                ]
+            }
+        },
         "/logout": {
             "post": {
                 "summary": "",
@@ -305,7 +438,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1210909742
+                        "example": 1616184952
                     },
                     "updated_at": {
                         "type": "string",
@@ -319,7 +452,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1276743280
+                        "example": 1950267912
                     }
                 },
                 "required": [
@@ -362,7 +495,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1324006999
+                        "example": 1459613786
                     },
                     "name": {
                         "type": "string",
@@ -375,7 +508,7 @@
                         "description": "integer",
                         "default": "0",
                         "nullable": false,
-                        "example": 1298612510
+                        "example": 1096845960
                     },
                     "updated_at": {
                         "type": "string",
@@ -400,7 +533,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1896096064
+                        "example": 1883262741
                     },
                     "created_at": {
                         "type": "string",
@@ -421,7 +554,7 @@
                         "description": "integer",
                         "default": "0",
                         "nullable": false,
-                        "example": 1399801475
+                        "example": 1023090879
                     },
                     "description": {
                         "type": "string",
@@ -434,14 +567,14 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1291199126
+                        "example": 1284085504
                     },
                     "price": {
                         "type": "integer",
                         "description": "integer",
                         "default": "0",
                         "nullable": false,
-                        "example": 1954973473
+                        "example": 1612449446
                     },
                     "primary_image": {
                         "type": "string",
@@ -454,7 +587,7 @@
                         "description": "integer",
                         "default": "0",
                         "nullable": false,
-                        "example": 1310778319
+                        "example": 1590777710
                     },
                     "title": {
                         "type": "string",
@@ -502,7 +635,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1499691275
+                        "example": 1167897758
                     },
                     "image": {
                         "type": "string",
@@ -515,7 +648,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1428883228
+                        "example": 1157275428
                     },
                     "updated_at": {
                         "type": "string",
@@ -578,7 +711,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1174866234
+                        "example": 1531335244
                     },
                     "last_name": {
                         "type": "string",
