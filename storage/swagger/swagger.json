@@ -765,7 +765,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1520079776
+                        "example": 1804496645
                     },
                     "updated_at": {
                         "type": "string",
@@ -779,7 +779,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1017619482
+                        "example": 1913967165
                     }
                 },
                 "required": [
@@ -822,7 +822,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1231998298
+                        "example": 1721367036
                     },
                     "name": {
                         "type": "string",
@@ -835,7 +835,7 @@
                         "description": "integer",
                         "default": "0",
                         "nullable": false,
-                        "example": 1037528399
+                        "example": 1928908865
                     },
                     "updated_at": {
                         "type": "string",
@@ -860,7 +860,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1342101553
+                        "example": 1589710821
                     },
                     "created_at": {
                         "type": "string",
@@ -881,7 +881,7 @@
                         "description": "integer",
                         "default": "0",
                         "nullable": false,
-                        "example": 1445961645
+                        "example": 1815649582
                     },
                     "description": {
                         "type": "string",
@@ -894,14 +894,14 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1406085038
+                        "example": 1986429418
                     },
                     "price": {
                         "type": "integer",
                         "description": "integer",
                         "default": "0",
                         "nullable": false,
-                        "example": 1599751430
+                        "example": 1226120473
                     },
                     "primary_image": {
                         "type": "string",
@@ -914,7 +914,7 @@
                         "description": "integer",
                         "default": "0",
                         "nullable": false,
-                        "example": 1923268300
+                        "example": 1598647351
                     },
                     "title": {
                         "type": "string",
@@ -962,7 +962,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1119946493
+                        "example": 1831723701
                     },
                     "image": {
                         "type": "string",
@@ -975,7 +975,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1639619032
+                        "example": 1811332204
                     },
                     "updated_at": {
                         "type": "string",
@@ -1038,7 +1038,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1758408607
+                        "example": 1419858752
                     },
                     "last_name": {
                         "type": "string",

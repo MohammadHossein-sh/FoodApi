@@ -68,7 +68,28 @@ class AddressController extends ApiController
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'address' => 'required|regex:/^[a-zA-Z0-9آ-ی\s]+$/',
+        ]);
+
+        if ($validator->fails()) {
+            return $this->errorResponse($validator->messages(), 422);
+        }
+
+
+        $user = auth()->user();
+        $address = $user->address()->get();
+
+        DB::beginTransaction();
+        foreach ($address as $addres) {
+            if ($addres->id == $id) {
+                $addres->update([
+                    'address' => $request->address
+                ]);
+                DB::commit();
+                return  $this->successResponse(new AddressResource($addres), 200, 'updated address successfully');
+            }
+        }
     }
 
     /**
