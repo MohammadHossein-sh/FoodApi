@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,7 +25,13 @@ use Illuminate\Support\Facades\Route;
 // Auth
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
-
+    Route::prefix('users')->group(function () {
+        Route::get('/list', [UserController::class, "index"]);
+        Route::get('/{user}', [UserController::class, "show"]);
+        Route::delete('/{user}', [UserController::class, "destroy"]);
+        Route::put('/update', [UserController::class, "update"]);
+        Route::patch('/update', [UserController::class, "update"]);
+    });
     Route::post('/logout', [AuthController::class, 'logout']);
 });
 
