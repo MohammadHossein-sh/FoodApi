@@ -54,11 +54,12 @@ class CategoryController extends ApiController
         $category = Category::create([
             'name' => $request->name,
             'display_name' => $request->display_name,
+            'parent_id' => $request->parent_id,
             'description' => $request->description,
         ]);
-        return  $this->successResponse(new CategoryResource($category), 201, 'created successfully');
 
         DB::commit();
+        return  $this->successResponse(new CategoryResource($category), 201, 'created successfully');
     }
 
     /**
@@ -96,9 +97,9 @@ class CategoryController extends ApiController
             'display_name' => $request->display_name,
             'description' => $request->description,
         ]);
-        return  $this->successResponse(new CategoryResource($category), 200, "updated successfully");
 
         DB::commit();
+        return  $this->successResponse(new CategoryResource($category), 200, "updated successfully");
     }
 
     /**
@@ -113,5 +114,14 @@ class CategoryController extends ApiController
         $category->delete();
         DB::commit();
         return  $this->successResponse(new CategoryResource($category), 200, "deleted successfully");
+    }
+    public function children(Category $category)
+    {
+        return $this->successResponse(new CategoryResource($category->load('children')), 200, 'children of category ' . $category->id . ' sucessfully');
+    }
+
+    public function parent(Category $category)
+    {
+        return $this->successResponse(new CategoryResource($category->load('parent')), 200, 'parent of category ' . $category->id . ' sucessfully');
     }
 }

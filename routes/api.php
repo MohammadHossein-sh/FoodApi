@@ -32,3 +32,5 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::apiResource('/categories', CategoryController::class);
+Route::get('categories/{category}/children', [CategoryController::class, 'children']);
+Route::get('categories/{category}/parent', [CategoryController::class, 'parent']);

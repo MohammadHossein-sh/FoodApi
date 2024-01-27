@@ -214,6 +214,64 @@
                     "categories"
                 ]
             }
+        },
+        "/categories/{category}/children": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "category",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "categories"
+                ]
+            }
+        },
+        "/categories/{category}/parent": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "category",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "categories"
+                ]
+            }
         }
     },
     "tags": [],
@@ -247,7 +305,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1740938903
+                        "example": 1210909742
                     },
                     "updated_at": {
                         "type": "string",
@@ -261,7 +319,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1975091307
+                        "example": 1276743280
                     }
                 },
                 "required": [
@@ -304,7 +362,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1971926289
+                        "example": 1324006999
                     },
                     "name": {
                         "type": "string",
@@ -317,7 +375,7 @@
                         "description": "integer",
                         "default": "0",
                         "nullable": false,
-                        "example": 1848605852
+                        "example": 1298612510
                     },
                     "updated_at": {
                         "type": "string",
@@ -342,7 +400,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1479688406
+                        "example": 1896096064
                     },
                     "created_at": {
                         "type": "string",
@@ -363,7 +421,7 @@
                         "description": "integer",
                         "default": "0",
                         "nullable": false,
-                        "example": 1002033779
+                        "example": 1399801475
                     },
                     "description": {
                         "type": "string",
@@ -376,14 +434,14 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1729585147
+                        "example": 1291199126
                     },
                     "price": {
                         "type": "integer",
                         "description": "integer",
                         "default": "0",
                         "nullable": false,
-                        "example": 1139694877
+                        "example": 1954973473
                     },
                     "primary_image": {
                         "type": "string",
@@ -396,7 +454,7 @@
                         "description": "integer",
                         "default": "0",
                         "nullable": false,
-                        "example": 1786784434
+                        "example": 1310778319
                     },
                     "title": {
                         "type": "string",
@@ -444,7 +502,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1403232891
+                        "example": 1499691275
                     },
                     "image": {
                         "type": "string",
@@ -457,7 +515,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1190590039
+                        "example": 1428883228
                     },
                     "updated_at": {
                         "type": "string",
@@ -520,7 +578,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1984749355
+                        "example": 1174866234
                     },
                     "last_name": {
                         "type": "string",
