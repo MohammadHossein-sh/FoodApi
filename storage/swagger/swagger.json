@@ -145,6 +145,205 @@
                 ]
             }
         },
+        "/address": {
+            "post": {
+                "summary": "Store a newly created resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "address"
+                ]
+            },
+            "get": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "address"
+                ]
+            }
+        },
+        "/address/{id}": {
+            "put": {
+                "summary": "Update the specified resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "address"
+                ]
+            },
+            "patch": {
+                "summary": "Update the specified resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "address"
+                ]
+            }
+        },
+        "/address/{address}": {
+            "delete": {
+                "summary": "Remove the specified resource from storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "address",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "address"
+                ]
+            },
+            "get": {
+                "summary": "Display the specified resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "address",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "address"
+                ]
+            }
+        },
+        "/address/deletes": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "address"
+                ]
+            }
+        },
         "/logout": {
             "post": {
                 "summary": "",
@@ -413,7 +612,7 @@
             "Address": {
                 "type": "object",
                 "properties": {
-                    "addresss": {
+                    "address": {
                         "type": "string",
                         "description": "text(65535)",
                         "nullable": false,
@@ -438,7 +637,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1616184952
+                        "example": 1166974585
                     },
                     "updated_at": {
                         "type": "string",
@@ -452,11 +651,11 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1950267912
+                        "example": 1878189392
                     }
                 },
                 "required": [
-                    "addresss",
+                    "address",
                     "id",
                     "user_id"
                 ]
@@ -495,7 +694,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1459613786
+                        "example": 1499875797
                     },
                     "name": {
                         "type": "string",
@@ -508,7 +707,7 @@
                         "description": "integer",
                         "default": "0",
                         "nullable": false,
-                        "example": 1096845960
+                        "example": 1097912116
                     },
                     "updated_at": {
                         "type": "string",
@@ -533,7 +732,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1883262741
+                        "example": 1895366575
                     },
                     "created_at": {
                         "type": "string",
@@ -554,7 +753,7 @@
                         "description": "integer",
                         "default": "0",
                         "nullable": false,
-                        "example": 1023090879
+                        "example": 1815043586
                     },
                     "description": {
                         "type": "string",
@@ -567,14 +766,14 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1284085504
+                        "example": 1234194472
                     },
                     "price": {
                         "type": "integer",
                         "description": "integer",
                         "default": "0",
                         "nullable": false,
-                        "example": 1612449446
+                        "example": 1238065610
                     },
                     "primary_image": {
                         "type": "string",
@@ -587,7 +786,7 @@
                         "description": "integer",
                         "default": "0",
                         "nullable": false,
-                        "example": 1590777710
+                        "example": 1560128482
                     },
                     "title": {
                         "type": "string",
@@ -635,7 +834,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1167897758
+                        "example": 1219695585
                     },
                     "image": {
                         "type": "string",
@@ -648,7 +847,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1157275428
+                        "example": 1181233365
                     },
                     "updated_at": {
                         "type": "string",
@@ -711,7 +910,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1531335244
+                        "example": 1737536566
                     },
                     "last_name": {
                         "type": "string",

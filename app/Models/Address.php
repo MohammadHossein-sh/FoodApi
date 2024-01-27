@@ -9,4 +9,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Address extends Model
 {
     use HasFactory, SoftDeletes;
+    protected $fillable = ['address', "user_id"];
+
 }

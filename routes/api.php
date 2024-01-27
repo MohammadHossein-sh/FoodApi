@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AddressController;
 use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\UserController;
@@ -31,6 +32,16 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::delete('/{user}', [UserController::class, "destroy"]);
         Route::put('/update', [UserController::class, "update"]);
         Route::patch('/update', [UserController::class, "update"]);
+    });
+
+    Route::prefix('address')->group(function () {
+        Route::post('/', [AddressController::class, "store"]);
+        Route::get('/', [AddressController::class, "index"]);
+        Route::put('/{id}', [AddressController::class, "update"]);
+        Route::patch('/{id}', [AddressController::class, "update"]);
+        Route::delete('/{address}', [AddressController::class, "destroy"]);
+        Route::get('/{address}', [AddressController::class, "show"]);
+        Route::get('/deletes', [AddressController::class, "deleted"]);
     });
     Route::post('/logout', [AuthController::class, 'logout']);
 });
