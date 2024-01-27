@@ -25,7 +25,17 @@ use Illuminate\Support\Facades\Route;
 
 // Auth
 
+Route::get('categories/deletes', [CategoryController::class, "deleted"])->middleware('check_admin');
+Route::post('categories/deletes/{category}', [CategoryController::class, "restore"])->withTrashed()->middleware('check_admin');
+Route::get('users/deletes/', [UserController::class, "deletes"])->middleware('check_admin');
+Route::post('users/deletes/{user}', [UserController::class, "restore"])->withTrashed()->middleware('check_admin');
+Route::post('categories', [CategoryController::class, "store"])->middleware('check_admin');
+Route::delete('categories/{category}', [CategoryController::class, "destroy"])->middleware('check_admin');
+Route::put('categories/{category}', [CategoryController::class, "update"])->middleware('check_admin');
+Route::patch('categories/{category}', [CategoryController::class, "update"])->middleware('check_admin');
+
 Route::group(['middleware' => ['auth:sanctum']], function () {
+
     Route::prefix('users')->group(function () {
         Route::get('/list', [UserController::class, "index"])->middleware('chek_admin');
         Route::get('/{user}', [UserController::class, "show"]);
@@ -36,6 +46,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::prefix('address')->group(function () {
         Route::post('/', [AddressController::class, "store"]);
+        Route::post('deletes/{address}', [AddressController::class, "restore"]);
         Route::get('/', [AddressController::class, "index"]);
         Route::put('/{id}', [AddressController::class, "update"]);
         Route::patch('/{id}', [AddressController::class, "update"]);
@@ -43,13 +54,17 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::get('/{address}', [AddressController::class, "show"]);
         Route::get('/deletes', [AddressController::class, "deleted"]);
     });
-    Route::post('/logout', [AuthController::class, 'logout']);
 
+    Route::post('/logout', [AuthController::class, 'logout']);
 });
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
-Route::apiResource('/categories', CategoryController::class);
+
+Route::get('categories', [CategoryController::class, "index"]);
+Route::get('categories/{category}', [CategoryController::class, "show"]);
+
+
 Route::get('categories/{category}/children', [CategoryController::class, 'children']);
 Route::get('categories/{category}/parent', [CategoryController::class, 'parent']);

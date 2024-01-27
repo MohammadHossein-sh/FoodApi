@@ -90,4 +90,20 @@ class UserController extends ApiController
         }
         return $this->successResponse(new UserResource($user), 200, "update of id: " . $user->id);
     }
+
+
+    public function deletes()
+    {
+        $users = User::onlyTrashed()->get();
+        
+        return  $this->successResponse(UserResource::collection($users), 200, "list of deletes user: ");
+
+    }
+    public function  restore(User $user)
+    {
+        DB::beginTransaction();
+        $user->restore();
+        DB::commit();
+        return  $this->successResponse(new UserResource($user), 200, "change off delete successfully");
+    }
 }

@@ -89,9 +89,23 @@ class AddressController extends ApiController
         $user = auth()->user();
         $addresses = $user->address()->onlyTrashed()->get();
 
-        // تبدیل هر آدرس در Collection به یک AddressResource
         $addressResources = AddressResource::collection($addresses);
 
         return $this->successResponse($addressResources, 200, 'List of delete addresses');
+    }
+
+    public function restore($id)
+    {
+        $user = auth()->user();
+        $address = $user->address()->onlyTrashed()->get();
+
+        DB::beginTransaction();
+        foreach ($address as $addres) {
+            if ($addres->id == $id) {
+                $addres->restore();
+                DB::commit();
+                return  $this->successResponse(new AddressResource($addres), 200, 'restore address');
+            }
+        }
     }
 }

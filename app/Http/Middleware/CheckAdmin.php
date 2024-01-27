@@ -19,10 +19,13 @@ class CheckAdmin
     public function handle(Request $request, Closure $next)
     {
         $user =  auth()->user();
+        if (!$user) {
+            return $this->errorResponse("Unauthenticated.", 401);
+        }
         if ($user->permission === 'admin') {
             return $next($request);
         } else {
-            return $this->errorResponse("un auth", 401);
+            return $this->errorResponse("Unauthenticated.", 401);
         }
     }
 }

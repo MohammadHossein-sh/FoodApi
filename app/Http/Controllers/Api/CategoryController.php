@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends ApiController
 {
+
+
     /**
      * Display a listing of the resource.
      *
@@ -54,7 +56,7 @@ class CategoryController extends ApiController
         $category = Category::create([
             'name' => $request->name,
             'display_name' => $request->display_name,
-            'parent_id' => $request->parent_id,
+            'parent_id' => $request->parent_id ? $request->parent_id  : 0,
             'description' => $request->description,
         ]);
 
@@ -123,5 +125,22 @@ class CategoryController extends ApiController
     public function parent(Category $category)
     {
         return $this->successResponse(new CategoryResource($category->load('parent')), 200, 'parent of category ' . $category->id . ' sucessfully');
+    }
+
+    public function deleted()
+    {
+
+        $categories = Category::onlyTrashed()->get();
+
+        $addressResources = CategoryResource::collection($categories);
+
+        return $this->successResponse($addressResources, 200, 'List of delete categories');
+    }
+    public function restore(Category $category)
+    {
+        DB::beginTransaction();
+        $category->restore();
+        DB::commit();
+        return  $this->successResponse(new CategoryResource($category), 200, "change off delete successfully");
     }
 }
