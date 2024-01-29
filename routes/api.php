@@ -25,16 +25,19 @@ use Illuminate\Support\Facades\Route;
 
 // Auth
 
-Route::get('categories/deletes', [CategoryController::class, "deleted"])->middleware('check_admin');
-Route::post('categories/deletes/{category}', [CategoryController::class, "restore"])->withTrashed()->middleware('check_admin');
-Route::get('users/deletes/', [UserController::class, "deletes"])->middleware('check_admin');
-Route::post('users/deletes/{user}', [UserController::class, "restore"])->withTrashed()->middleware('check_admin');
-Route::post('categories', [CategoryController::class, "store"])->middleware('check_admin');
-Route::delete('categories/{category}', [CategoryController::class, "destroy"])->middleware('check_admin');
-Route::put('categories/{category}', [CategoryController::class, "update"])->middleware('check_admin');
-Route::patch('categories/{category}', [CategoryController::class, "update"])->middleware('check_admin');
+
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
+
+
+    Route::get('categories/deletes', [CategoryController::class, "deleted"])->middleware('check_admin');
+    Route::post('categories/deletes/{category}', [CategoryController::class, "restore"])->withTrashed()->middleware('check_admin');
+    Route::get('users/deletes/', [UserController::class, "deletes"])->middleware('check_admin');
+    Route::post('users/deletes/{user}', [UserController::class, "restore"])->withTrashed()->middleware('check_admin');
+    Route::post('categories', [CategoryController::class, "store"])->middleware('check_admin');
+    Route::delete('categories/{category}', [CategoryController::class, "destroy"])->middleware('check_admin');
+    Route::put('categories/{category}', [CategoryController::class, "update"])->middleware('check_admin');
+    Route::patch('categories/{category}', [CategoryController::class, "update"])->middleware('check_admin');
 
     Route::prefix('users')->group(function () {
         Route::get('/list', [UserController::class, "index"])->middleware('chek_admin');
