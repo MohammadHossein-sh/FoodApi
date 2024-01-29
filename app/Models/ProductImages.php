@@ -10,4 +10,8 @@ class ProductImages extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $fillable = [
+        'product_id',
+        'image',
+    ];
 }
