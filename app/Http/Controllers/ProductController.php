@@ -45,7 +45,7 @@ class ProductController extends ApiController
             'category_id' => 'required|regex:/[0-9]+/',
             'primary_image' => 'required|image',
             'description' => 'required|regex:/^[a-zA-Z0-9آ-ی\s]+$/',
-            'price' => 'required|regex:/[0-9]/',
+            'price' => 'required|regex:/[0-9]+/',
             'quantity' => 'required|regex:/^[a-zA-Z0-9آ-ی\s]+$/',
             'delivery_amount' => 'regex:/^[a-zA-Z0-9آ-ی\s]+$/',
             'images.*' => 'image'
@@ -95,7 +95,7 @@ class ProductController extends ApiController
      */
     public function show(Product $product)
     {
-        return  $this->successResponse(new ProductResource($product), 200, 'product list of ' . $category->id);
+        return  $this->successResponse(new ProductResource($product), 200, 'product list of ' . $product->id);
     }
 
     /**
@@ -105,9 +105,61 @@ class ProductController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|regex:/^[a-zA-Z0-9آ-ی\s]+$/',
+            'category_id' => 'required|regex:/[0-9]+/',
+            'primary_image' => 'image',
+            'description' => 'required|regex:/^[a-zA-Z0-9آ-ی\s]+$/',
+            'price' => 'required|regex:/[0-9]+/',
+            'quantity' => 'required|regex:/^[a-zA-Z0-9آ-ی\s]+$/',
+            'delivery_amount' => 'regex:/^[a-zA-Z0-9آ-ی\s]+$/',
+            'images.*' => 'image'
+        ]);
+
+        if ($validator->fails()) {
+            return $this->errorResponse($validator->messages(), 422);
+        }
+        if ($request->has('primary_image')) {
+            $FileName =  Carbon::now()->microsecond . "." . $request->primary_image->extension();
+            $request->primary_image->move(public_path('images/products'), $FileName);
+        }
+
+
+        if ($request->has('images')) {
+            foreach ($product->images as $image) {
+                $image->delete();
+            }
+        }
+        if ($request->has('images')) {
+            $ImagesFileNames = [];
+            foreach ($request->images as $image) {
+                $fileName = Carbon::now()->microsecond . "." .  $image->extension();
+                $image->move(public_path('images/products/'), $fileName);
+                array_push($ImagesFileNames, $fileName);
+            }
+        }
+
+        $product->update([
+            'title' => $request->title,
+            'category_id' => $request->category_id,
+            'primary_image' => $request->has('primary_image') ? $FileName : $product->primary_image,
+            'description' => $request->description,
+            'price' => $request->price,
+            'quantity' => $request->quantity,
+            'delivery_amount' => $request->delivery_amount,
+        ]);
+
+        if ($request->has('images')) {
+            foreach ($ImagesFileNames as $image) {
+                ProductImages::create([
+                    'image' => $image,
+                    'product_id' => $product->id
+                ]);
+            }
+        }
+        return  $this->successResponse(new ProductResource($product), 200, "updated successfully");
     }
 
     /**

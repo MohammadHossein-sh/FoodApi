@@ -18,4 +18,7 @@ class Product extends Model
         'quantity',
         'delivery_amount'
     ];
+    public function images(){
+        return $this->hasMany(ProductImages::class);
+    }
 }
