@@ -175,4 +175,22 @@ class ProductController extends ApiController
         DB::commit();
         return  $this->successResponse(new ProductResource($product), 200, "deleted successfully");
     }
+
+
+    public function deletes()
+    {
+        $products = Product::onlyTrashed()->get();
+
+        $productsResource = ProductResource::collection($products);
+
+        return  $this->successResponse($productsResource, 200, "list deleted successfully");
+    }
+
+    public function restore(Product $product){
+
+        DB::beginTransaction();
+        $product->restore();
+        DB::commit();
+        return  $this->successResponse(new ProductResource($product), 200, "change off delete successfully");
+    }
 }

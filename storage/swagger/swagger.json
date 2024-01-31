@@ -12,117 +12,7 @@
         }
     ],
     "paths": {
-        "/categories/deletes": {
-            "get": {
-                "summary": "",
-                "description": "",
-                "deprecated": false,
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    },
-                    "401": {
-                        "description": "(Unauthorized) Invalid or missing Access Token"
-                    }
-                },
-                "tags": [
-                    "categories"
-                ]
-            }
-        },
-        "/categories/deletes/{category}": {
-            "post": {
-                "summary": "",
-                "description": "",
-                "deprecated": false,
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    },
-                    "401": {
-                        "description": "(Unauthorized) Invalid or missing Access Token"
-                    }
-                },
-                "parameters": [
-                    {
-                        "name": "category",
-                        "in": "path",
-                        "required": true,
-                        "description": "",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "tags": [
-                    "categories"
-                ]
-            }
-        },
-        "/users/deletes": {
-            "get": {
-                "summary": "",
-                "description": "",
-                "deprecated": false,
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    },
-                    "401": {
-                        "description": "(Unauthorized) Invalid or missing Access Token"
-                    }
-                },
-                "tags": [
-                    "users"
-                ]
-            }
-        },
-        "/users/deletes/{user}": {
-            "post": {
-                "summary": "",
-                "description": "",
-                "deprecated": false,
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    },
-                    "401": {
-                        "description": "(Unauthorized) Invalid or missing Access Token"
-                    }
-                },
-                "parameters": [
-                    {
-                        "name": "user",
-                        "in": "path",
-                        "required": true,
-                        "description": "",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "tags": [
-                    "users"
-                ]
-            }
-        },
-        "/categories": {
-            "post": {
-                "summary": "Store a newly created resource in storage.",
-                "description": "",
-                "deprecated": false,
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    },
-                    "401": {
-                        "description": "(Unauthorized) Invalid or missing Access Token"
-                    }
-                },
-                "tags": [
-                    "categories"
-                ]
-            },
+        "/products": {
             "get": {
                 "summary": "Display a listing of the resource.",
                 "description": "",
@@ -136,13 +26,34 @@
                     }
                 },
                 "tags": [
-                    "categories"
+                    "products"
+                ]
+            },
+            "post": {
+                "summary": "Store a newly created resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "products"
                 ]
             }
         },
-        "/categories/{category}": {
-            "delete": {
-                "summary": "Remove the specified resource from storage.",
+        "/products/{product}": {
+            "get": {
+                "summary": "Display the specified resource.",
                 "description": "",
                 "deprecated": false,
                 "responses": {
@@ -155,7 +66,7 @@
                 },
                 "parameters": [
                     {
-                        "name": "category",
+                        "name": "product",
                         "in": "path",
                         "required": true,
                         "description": "",
@@ -165,7 +76,7 @@
                     }
                 ],
                 "tags": [
-                    "categories"
+                    "products"
                 ]
             },
             "put": {
@@ -182,7 +93,7 @@
                 },
                 "parameters": [
                     {
-                        "name": "category",
+                        "name": "product",
                         "in": "path",
                         "required": true,
                         "description": "",
@@ -191,8 +102,13 @@
                         }
                     }
                 ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
                 "tags": [
-                    "categories"
+                    "products"
                 ]
             },
             "patch": {
@@ -209,7 +125,7 @@
                 },
                 "parameters": [
                     {
-                        "name": "category",
+                        "name": "product",
                         "in": "path",
                         "required": true,
                         "description": "",
@@ -218,12 +134,17 @@
                         }
                     }
                 ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
                 "tags": [
-                    "categories"
+                    "products"
                 ]
             },
-            "get": {
-                "summary": "Display the specified resource.",
+            "delete": {
+                "summary": "Remove the specified resource from storage.",
                 "description": "",
                 "deprecated": false,
                 "responses": {
@@ -236,7 +157,7 @@
                 },
                 "parameters": [
                     {
-                        "name": "category",
+                        "name": "product",
                         "in": "path",
                         "required": true,
                         "description": "",
@@ -245,8 +166,13 @@
                         }
                     }
                 ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
                 "tags": [
-                    "categories"
+                    "products"
                 ]
             }
         },
@@ -616,6 +542,341 @@
                 ]
             }
         },
+        "/products/deletes": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "products"
+                ]
+            }
+        },
+        "/products/deletes/{product}": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "product",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "products"
+                ]
+            }
+        },
+        "/categories/deletes": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "categories"
+                ]
+            }
+        },
+        "/categories/deletes/{category}": {
+            "post": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "category",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "categories"
+                ]
+            }
+        },
+        "/users/deletes": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "users"
+                ]
+            }
+        },
+        "/users/deletes/{user}": {
+            "post": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "users"
+                ]
+            }
+        },
+        "/categories": {
+            "post": {
+                "summary": "Store a newly created resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "categories"
+                ]
+            },
+            "get": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "categories"
+                ]
+            }
+        },
+        "/categories/{category}": {
+            "delete": {
+                "summary": "Remove the specified resource from storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "category",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "categories"
+                ]
+            },
+            "put": {
+                "summary": "Update the specified resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "category",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "categories"
+                ]
+            },
+            "patch": {
+                "summary": "Update the specified resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "category",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "categories"
+                ]
+            },
+            "get": {
+                "summary": "Display the specified resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "category",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "categories"
+                ]
+            }
+        },
         "/logout": {
             "post": {
                 "summary": "",
@@ -765,7 +1026,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1804496645
+                        "example": 1518773111
                     },
                     "updated_at": {
                         "type": "string",
@@ -779,7 +1040,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1913967165
+                        "example": 1591120403
                     }
                 },
                 "required": [
@@ -822,7 +1083,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1721367036
+                        "example": 1817495922
                     },
                     "name": {
                         "type": "string",
@@ -835,7 +1096,7 @@
                         "description": "integer",
                         "default": "0",
                         "nullable": false,
-                        "example": 1928908865
+                        "example": 1006313996
                     },
                     "updated_at": {
                         "type": "string",
@@ -860,7 +1121,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1589710821
+                        "example": 1793720714
                     },
                     "created_at": {
                         "type": "string",
@@ -881,7 +1142,7 @@
                         "description": "integer",
                         "default": "0",
                         "nullable": false,
-                        "example": 1815649582
+                        "example": 1985435357
                     },
                     "description": {
                         "type": "string",
@@ -894,14 +1155,14 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1986429418
+                        "example": 1085079852
                     },
                     "price": {
                         "type": "integer",
                         "description": "integer",
                         "default": "0",
                         "nullable": false,
-                        "example": 1226120473
+                        "example": 1002107685
                     },
                     "primary_image": {
                         "type": "string",
@@ -914,7 +1175,7 @@
                         "description": "integer",
                         "default": "0",
                         "nullable": false,
-                        "example": 1598647351
+                        "example": 1318923109
                     },
                     "title": {
                         "type": "string",
@@ -962,7 +1223,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1831723701
+                        "example": 1219318654
                     },
                     "image": {
                         "type": "string",
@@ -975,7 +1236,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1811332204
+                        "example": 1679025696
                     },
                     "updated_at": {
                         "type": "string",
@@ -1038,7 +1299,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1419858752
+                        "example": 1192214057
                     },
                     "last_name": {
                         "type": "string",

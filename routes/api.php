@@ -26,22 +26,13 @@ use Illuminate\Support\Facades\Route;
 
 // Auth
 
-Route::apiResource('products',ProductController::class);
+Route::get('/products', [ProductController::class, 'index']);
+Route::get('/products/{product}', [ProductController::class, 'show']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
-
-    Route::get('categories/deletes', [CategoryController::class, "deleted"])->middleware('check_admin');
-    Route::post('categories/deletes/{category}', [CategoryController::class, "restore"])->withTrashed()->middleware('check_admin');
-    Route::get('users/deletes/', [UserController::class, "deletes"])->middleware('check_admin');
-    Route::post('users/deletes/{user}', [UserController::class, "restore"])->withTrashed()->middleware('check_admin');
-    Route::post('categories', [CategoryController::class, "store"])->middleware('check_admin');
-    Route::delete('categories/{category}', [CategoryController::class, "destroy"])->middleware('check_admin');
-    Route::put('categories/{category}', [CategoryController::class, "update"])->middleware('check_admin');
-    Route::patch('categories/{category}', [CategoryController::class, "update"])->middleware('check_admin');
-
     Route::prefix('users')->group(function () {
-        Route::get('/list', [UserController::class, "index"])->middleware('chek_admin');
+        Route::get('/list', [UserController::class, "index"])->middleware('check_admin');
         Route::get('/{user}', [UserController::class, "show"]);
         Route::delete('/{user}', [UserController::class, "destroy"]);
         Route::put('/update', [UserController::class, "update"]);
@@ -57,6 +48,24 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::delete('/{address}', [AddressController::class, "destroy"]);
         Route::get('/{address}', [AddressController::class, "show"]);
         Route::get('/deletes', [AddressController::class, "deleted"]);
+    });
+
+    Route::group(['middleware' => ['check_admin']], function () {
+        Route::get('products/deletes/', [ProductController::class, "deletes"]);
+        Route::get('products/deletes/{product}', [ProductController::class, "restore"])->withTrashed();
+        Route::post('/products', [ProductController::class, 'store']);
+        Route::put('/products/{product}', [ProductController::class, 'update']);
+        Route::patch('/products/{product}', [ProductController::class, 'update']);
+        Route::delete('/products/{product}', [ProductController::class, 'destroy']);
+ 
+        Route::get('categories/deletes', [CategoryController::class, "deleted"]);
+        Route::post('categories/deletes/{category}', [CategoryController::class, "restore"])->withTrashed();
+        Route::get('users/deletes/', [UserController::class, "deletes"]);
+        Route::post('users/deletes/{user}', [UserController::class, "restore"])->withTrashed();
+        Route::post('categories', [CategoryController::class, "store"]);
+        Route::delete('categories/{category}', [CategoryController::class, "destroy"]);
+        Route::put('categories/{category}', [CategoryController::class, "update"]);
+        Route::patch('categories/{category}', [CategoryController::class, "update"]);
     });
 
     Route::post('/logout', [AuthController::class, 'logout']);

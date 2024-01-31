@@ -53,6 +53,7 @@ class Handler extends ExceptionHandler
         if ($e instanceof ModelNotFoundException) {
             DB::rollBack();
             return $this->errorResponse('Accepted 202', 202);
+            // return $this->errorResponse($e->getMessage(), 404);
         }
 
         if ($e instanceof NotFoundHttpException) {
