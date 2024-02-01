@@ -141,6 +141,11 @@ class CategoryController extends ApiController
         DB::beginTransaction();
         $category->restore();
         DB::commit();
-        return  $this->successResponse(new CategoryResource($category), 200, "change off delete successfully");
+        return $this->successResponse(new CategoryResource($category), 200, "change off delete successfully");
+    }
+
+    public function products(Category $category)
+    {
+        return $this->successResponse(new CategoryResource($category->load('products')));
     }
 }

@@ -79,5 +79,6 @@ Route::get('categories', [CategoryController::class, "index"]);
 Route::get('categories/{category}', [CategoryController::class, "show"]);
 
 
+Route::get('categories/{category}/products', [CategoryController::class, 'products']);
 Route::get('categories/{category}/children', [CategoryController::class, 'children']);
 Route::get('categories/{category}/parent', [CategoryController::class, 'parent']);

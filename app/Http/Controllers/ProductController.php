@@ -19,6 +19,7 @@ class ProductController extends ApiController
      */
     public function index(Request $request)
     {
+        
         $paginate =  $request->input('paginate', 0);
         if ($paginate !== 0) {
             $products = Product::paginate($paginate);

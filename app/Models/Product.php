@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Product extends Model
 {
     use HasFactory, SoftDeletes;
+
+    protected $table = 'products';
     protected $fillable = [
         'title',
         'category_id',
@@ -18,7 +20,12 @@ class Product extends Model
         'quantity',
         'delivery_amount'
     ];
-    public function images(){
+    public function images()
+    {
         return $this->hasMany(ProductImages::class);
+    }
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 }
