@@ -19,7 +19,7 @@ class ProductController extends ApiController
      */
     public function index(Request $request)
     {
-        
+
         $paginate =  $request->input('paginate', 0);
         if ($paginate !== 0) {
             $products = Product::paginate($paginate);
@@ -187,11 +187,14 @@ class ProductController extends ApiController
         return  $this->successResponse($productsResource, 200, "list deleted successfully");
     }
 
-    public function restore(Product $product){
+    public function restore(Product $product)
+    {
 
         DB::beginTransaction();
         $product->restore();
         DB::commit();
         return  $this->successResponse(new ProductResource($product), 200, "change off delete successfully");
     }
+
+  
 }

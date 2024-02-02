@@ -936,6 +936,35 @@
                 ]
             }
         },
+        "/categories/{category}/products": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "category",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "categories"
+                ]
+            }
+        },
         "/categories/{category}/children": {
             "get": {
                 "summary": "",
@@ -1026,7 +1055,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1518773111
+                        "example": 1870460907
                     },
                     "updated_at": {
                         "type": "string",
@@ -1040,7 +1069,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1591120403
+                        "example": 1460903487
                     }
                 },
                 "required": [
@@ -1083,7 +1112,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1817495922
+                        "example": 1514073513
                     },
                     "name": {
                         "type": "string",
@@ -1096,7 +1125,7 @@
                         "description": "integer",
                         "default": "0",
                         "nullable": false,
-                        "example": 1006313996
+                        "example": 1327080164
                     },
                     "updated_at": {
                         "type": "string",
@@ -1121,7 +1150,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1793720714
+                        "example": 1087374206
                     },
                     "created_at": {
                         "type": "string",
@@ -1142,7 +1171,7 @@
                         "description": "integer",
                         "default": "0",
                         "nullable": false,
-                        "example": 1985435357
+                        "example": 1482400735
                     },
                     "description": {
                         "type": "string",
@@ -1155,14 +1184,14 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1085079852
+                        "example": 1548511175
                     },
                     "price": {
                         "type": "integer",
                         "description": "integer",
                         "default": "0",
                         "nullable": false,
-                        "example": 1002107685
+                        "example": 1011166693
                     },
                     "primary_image": {
                         "type": "string",
@@ -1175,7 +1204,7 @@
                         "description": "integer",
                         "default": "0",
                         "nullable": false,
-                        "example": 1318923109
+                        "example": 1971139185
                     },
                     "title": {
                         "type": "string",
@@ -1223,7 +1252,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1219318654
+                        "example": 1143155545
                     },
                     "image": {
                         "type": "string",
@@ -1236,7 +1265,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1679025696
+                        "example": 1885050234
                     },
                     "updated_at": {
                         "type": "string",
@@ -1299,7 +1328,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1192214057
+                        "example": 1476008880
                     },
                     "last_name": {
                         "type": "string",

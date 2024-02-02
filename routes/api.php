@@ -3,6 +3,7 @@
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -30,11 +31,16 @@ Route::get('/products', [ProductController::class, 'index']);
 Route::get('/products/{product}', [ProductController::class, 'show']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::prefix('orders')->group(function () {
+        Route::post('/', [OrderController::class, 'store']);
+    });
+
 
     Route::prefix('users')->group(function () {
         Route::get('/list', [UserController::class, "index"])->middleware('check_admin');
         Route::get('/{user}', [UserController::class, "show"]);
         Route::delete('/{user}', [UserController::class, "destroy"]);
+        Route::post('change/{user}', [UserController::class, "change"])->middleware('check_admin');
         Route::put('/update', [UserController::class, "update"]);
         Route::patch('/update', [UserController::class, "update"]);
     });
@@ -57,7 +63,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::put('/products/{product}', [ProductController::class, 'update']);
         Route::patch('/products/{product}', [ProductController::class, 'update']);
         Route::delete('/products/{product}', [ProductController::class, 'destroy']);
- 
+
         Route::get('categories/deletes', [CategoryController::class, "deleted"]);
         Route::post('categories/deletes/{category}', [CategoryController::class, "restore"])->withTrashed();
         Route::get('users/deletes/', [UserController::class, "deletes"]);

@@ -95,9 +95,8 @@ class UserController extends ApiController
     public function deletes()
     {
         $users = User::onlyTrashed()->get();
-        
-        return  $this->successResponse(UserResource::collection($users), 200, "list of deletes user: ");
 
+        return  $this->successResponse(UserResource::collection($users), 200, "list of deletes user: ");
     }
     public function  restore(User $user)
     {
@@ -105,5 +104,20 @@ class UserController extends ApiController
         $user->restore();
         DB::commit();
         return  $this->successResponse(new UserResource($user), 200, "change off delete successfully");
+    }
+    public function change(User $user)
+    {
+        DB::beginTransaction();
+        if ($user->permission == 'admin') {
+            $user->update([
+                'permission' => 'user'
+            ]);
+        } else {
+            $user->update([
+                'permission' => 'admin'
+            ]);
+        }
+        DB::commit();
+        return  $this->successResponse(new UserResource($user), 200, "changed permissions");
     }
 }
