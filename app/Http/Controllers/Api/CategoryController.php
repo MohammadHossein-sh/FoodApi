@@ -43,10 +43,10 @@ class CategoryController extends ApiController
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|regex:/^[a-zA-Z0-9آ-ی\s]+$/|unique:categories,name',
-            'parent_id' => 'regex:/^[a-zA-Z0-9آ-ی\s]+$/',
-            'display_name' => 'required|regex:/^[a-zA-Z0-9آ-ی\s]+$/|unique:categories,name',
-            'description' => 'regex:/^[a-zA-Z0-9آ-ی\s]+$/'
+            'name' => 'required|regex:/^[\p{L}\p{N}]+$/u|unique:categories,name',
+            'parent_id' => 'regex:/^[\p{L}\p{N}]+$/u',
+            'display_name' => 'required|regex:/^[\p{L}\p{N}]+$/u|unique:categories,name',
+            'description' => 'regex:/^[\p{L}\p{N}]+$/u'
         ]);
         if ($validator->fails()) {
             return $this->errorResponse($validator->messages(), 422);
@@ -85,10 +85,10 @@ class CategoryController extends ApiController
     public function update(Request $request, Category $category)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|regex:/^[a-zA-Z0-9آ-ی\s]+$/|unique:categories,name',
-            'parent_id' => 'regex:/^[a-zA-Z0-9آ-ی\s]+$/',
-            'display_name' => 'required|regex:/^[a-zA-Z0-9آ-ی\s]+$/|unique:categories,name',
-            'description' => 'regex:/^[a-zA-Z0-9آ-ی\s]+$/'
+            'name' => 'required|regex:/^[\p{L}\p{N}]+$/u|unique:categories,name',
+            'parent_id' => 'regex:/^[\p{L}\p{N}]+$/u',
+            'display_name' => 'required|regex:/^[\p{L}\p{N}]+$/u|unique:categories,name',
+            'description' => 'regex:/^[\p{L}\p{N}]+$/u'
         ]);
         if ($validator->fails()) {
             return $this->errorResponse($validator->messages(), 422);

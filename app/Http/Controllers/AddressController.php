@@ -31,8 +31,9 @@ class AddressController extends ApiController
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'address' => 'required|regex:/^[a-zA-Z0-9آ-ی\s]+$/',
+            'address' => 'required|regex:/^[\p{L}\p{N}]+$/u',
         ]);
+
 
         if ($validator->fails()) {
             return $this->errorResponse($validator->messages(), 422);
@@ -56,7 +57,12 @@ class AddressController extends ApiController
      */
     public function show(Address $address)
     {
-        return  $this->successResponse(new  AddressResource($address), 200, 'show of : ' . $address->id);
+        $user = auth()->user();
+        if($address->user_id == $user->id){
+            return  $this->successResponse(new  AddressResource($address), 200, 'show of : ' . $address->id);
+        }else{
+            return $this->errorResponse('This address was not found for this user', 422);
+        }
     }
 
     /**
@@ -69,7 +75,7 @@ class AddressController extends ApiController
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'address' => 'required|regex:/^[a-zA-Z0-9آ-ی\s]+$/',
+            'address' => 'required|regex:/^[\p{L}\p{N}]+$/u',
         ]);
 
         if ($validator->fails()) {

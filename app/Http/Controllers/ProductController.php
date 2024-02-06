@@ -42,13 +42,13 @@ class ProductController extends ApiController
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'title' => 'required|regex:/^[a-zA-Z0-9آ-ی\s]+$/',
+            'title' => 'required|regex:/^[\p{L}\p{N}]+$/u',
             'category_id' => 'required|regex:/[0-9]+/',
             'primary_image' => 'required|image',
-            'description' => 'required|regex:/^[a-zA-Z0-9آ-ی\s]+$/',
+            'description' => 'required|regex:/^[\p{L}\p{N}]+$/u',
             'price' => 'required|regex:/[0-9]+/',
-            'quantity' => 'required|regex:/^[a-zA-Z0-9آ-ی\s]+$/',
-            'delivery_amount' => 'regex:/^[a-zA-Z0-9آ-ی\s]+$/',
+            'quantity' => 'required|regex:/^[\p{L}\p{N}]+$/u',
+            'delivery_amount' => 'regex:/^[\p{L}\p{N}]+$/u',
             'images.*' => 'image'
         ]);
 
@@ -109,13 +109,13 @@ class ProductController extends ApiController
     public function update(Request $request, Product $product)
     {
         $validator = Validator::make($request->all(), [
-            'title' => 'required|regex:/^[a-zA-Z0-9آ-ی\s]+$/',
+            'title' => 'required|regex:/^[\p{L}\p{N}]+$/u',
             'category_id' => 'required|regex:/[0-9]+/',
             'primary_image' => 'image',
-            'description' => 'required|regex:/^[a-zA-Z0-9آ-ی\s]+$/',
+            'description' => 'required|regex:/^[\p{L}\p{N}]+$/u',
             'price' => 'required|regex:/[0-9]+/',
-            'quantity' => 'required|regex:/^[a-zA-Z0-9آ-ی\s]+$/',
-            'delivery_amount' => 'regex:/^[a-zA-Z0-9آ-ی\s]+$/',
+            'quantity' => 'required|regex:/^[\p{L}\p{N}]+$/u',
+            'delivery_amount' => 'regex:/^[\p{L}\p{N}]+$/u',
             'images.*' => 'image'
         ]);
 
@@ -189,7 +189,6 @@ class ProductController extends ApiController
 
     public function restore(Product $product)
     {
-
         DB::beginTransaction();
         $product->restore();
         DB::commit();

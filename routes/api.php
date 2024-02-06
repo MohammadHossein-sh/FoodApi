@@ -32,7 +32,13 @@ Route::get('/products/{product}', [ProductController::class, 'show']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::prefix('orders')->group(function () {
+        Route::get('/deletes', [OrderController::class, 'deletes'])->middleware('check_admin');
+        Route::get('/user', [OrderController::class, 'userOrder']);
+        Route::post('deletes/{order}', [OrderController::class, "restore"])->withTrashed()->middleware('check_admin');
+        Route::get('/', [OrderController::class, 'index'])->middleware('check_admin');
+        Route::get('/{order}', [OrderController::class, 'show']);
         Route::post('/', [OrderController::class, 'store']);
+        Route::delete('/{order}', [OrderController::class, 'destroy'])->middleware('check_admin');
     });
 
 

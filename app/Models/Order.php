@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Order extends Model
 {
-    use HasFactory,SoftDeletes;
-    protected $fillable = ['subtotal','product_id','user_id','quantity','price'];
+    use HasFactory, SoftDeletes;
+    protected $fillable = ['subtotal', 'product_id', 'user_id', 'quantity', 'price'];
 }

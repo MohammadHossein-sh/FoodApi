@@ -17,8 +17,8 @@ class AuthController extends ApiController
     {
 
         $validator = Validator::make($request->all(), [
-            'first_name' => 'required|string|regex:/^[a-zA-Z0-9آ-ی\s]+$/',
-            'last_name' => 'required|string|regex:/^[a-zA-Z0-9آ-ی\s]+$/',
+            'first_name' => 'required|string|regex:/^[\p{L}\p{N}]+$/u',
+            'last_name' => 'required|string|regex:/^[\p{L}\p{N}]+$/u',
             'email' => 'required|string|regex:/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/|unique:users,email',
             'password' => 'required|string|regex:/^[a-zA-Z0-9\s]+$/',
             'c_password' => 'required|string|same:password',
